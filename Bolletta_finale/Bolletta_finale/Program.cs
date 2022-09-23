@@ -14,20 +14,18 @@ namespace Bolletta_finale
         private static string valorescelta = "";
         private static bool controllo = false;
         private static double kwh = 0, smc = 0;//consumo annuale dell'utente
-        private static double consumokwh = 0, consumosmc = 0;//consumo totale reale
         private static double spesa_tot_materia=0;
 
         //Istanze di classi utili per trovare lo strumento più conveniente
         private static Macchine riscaldamento = new Macchine();
-        private static Macchine riscaldamaento_scelto = new Macchine();
+        private static Macchine riscaldamento_scelto = new Macchine();
 
         //liste e matrice per controllo dati
         private static List<object> riscaldamenti;//Lista per contenere le macchine da confrontare
         private static string[] nomi_macchine = new string[5];//array per nomi delle macchine
         private static double[] bollette = new double[5];//array che conterrà i nome delle macchine e le bollette che ognuna provoca 
 
-        //Istanza Bolletta
-        protected static Bolletta bolletta = new Bolletta();
+        
 
         static int Scelta(int s)
         {
@@ -63,38 +61,41 @@ namespace Bolletta_finale
             return kwh;
         }
 
-        public static void Tutte_bollette()
+        public static void Tutte_bollette(double smc, double kwh)
         {
-            int i = 0; ;
+            int i = 0; 
           foreach(Macchine riscaldamento in riscaldamenti)
             {
+                Bolletta bolletta = new Bolletta();
 
-                if (riscaldamento.Get_tipologia_consumo() == "gas")
+                if (riscaldamento.Get_tipologia_consumo() == "Gas")
                 {
                     riscaldamento.Set_costo_gas();
                     riscaldamento.Set_consumo(smc);
-                    riscaldamento.Calcola_utilizzo();
+                    riscaldamento.Calcola_utilizzo(kwh);
                 }
-                else
+                else if(riscaldamento.Get_tipologia_consumo() == "Elettricita")
                 {
                     riscaldamento.Set_costo_elettricità();
                     riscaldamento.Set_consumo(kwh);
-                    riscaldamento.Calcola_utilizzo();
+                    riscaldamento.Calcola_utilizzo(smc);
 
                 }
 
-                spesa_tot_materia = riscaldamaento_scelto.costo_totale;//spesa totale provocata dal macchinario
+                riscaldamento.Calcola_costo_totale();//spesa totale materia
+                spesa_tot_materia = riscaldamento.costo_totale;//spesa totale provocata dal macchinario
                 bolletta.Set_spesa_materia(spesa_tot_materia);//Passo alla classe bolletta la spesa totale provocata dal macchinario
                 bolletta.Calcolo_bolletta2();
                 double costi_aggiuntivi = riscaldamento.Get_costi_aggiuntivi();
                 bolletta.Calcolo_bolletta1(costi_aggiuntivi);//Calcolo la bolletta con costi aggiuntivi pk è una macchina non posseduta dall'utente
-                bolletta.Calcolo_bolletta_anni();
-                //Console.WriteLine(bolletta);
-
+                string nome = riscaldamento.Get_nome();
+                bolletta.Set_nome(nome);
+                Console.WriteLine(bolletta);
+                double bollettone =bolletta.tot_bolletta1+(bolletta.tot_bolletta2*9);//calcolo l'andamento della bolletta nel corso di 10 anni
                 //Ed ora dopo aver calcolato le bollette per ogni macchina non posseduta dall'utente le vado ad inserire nell'array per compararle e vedere quale fa risparmiare di più
                 
-                 nomi_macchine[i] =riscaldamento.Get_nome();
-                 bollette[i] = bolletta.bolletta_anni;
+                 nomi_macchine[i] =nome;
+                 bollette[i] = bollettone;
                  i++;
                 
             }
@@ -102,25 +103,21 @@ namespace Bolletta_finale
 
         public static string Controllo_migliore()
         {
-            int economica=0;
-            for(int i = 0; i <= 5; i++)
+          
+            int contenitore=0;
+            double min;
+            min = bollette[0];
+            for (int i = 0; i < bollette.Length; i++)
             {
-                for(int j = 1; j <= 5; j++)
+                if (min > bollette[i])
                 {
-                    if (bollette[i]>bollette[j])
-                    {
-                        economica = j;
-                    }
-                    else
-                    {
-                        economica = i;
-                    }
-                   
+                    min = bollette[i];
+                    contenitore = i;
                 }
+                   
             }
+            return nomi_macchine[contenitore];
 
-            return nomi_macchine[economica];
-            
         }
 
         static void Main(string[] args)
@@ -137,56 +134,68 @@ namespace Bolletta_finale
             SetKwh(kwh);
             //L'utente sceglie lo strumente che possiede al momento
             Scelta(scelta);
-            Console.WriteLine($"La tua scelta e' {scelta}");
-            /*consumosmc = (kwh / riscaldamento.potere_calorifico) + smc;
-            consumokwh = (smc * riscaldamento.potere_calorifico) + kwh;*/
             switch (scelta)
             {
                 case 1:
-                    riscaldamaento_scelto = caldaia_t;
+                    riscaldamento_scelto=caldaia_t;
                     riscaldamenti = new List<object>() { caldaia_c,caldaia_t, stufa, pompa_e, pompa_bl };
                     break;
                 case 2:
-                    riscaldamaento_scelto = caldaia_c;
+                    riscaldamento_scelto=caldaia_c;
                     riscaldamenti = new List<object>() { caldaia_c, caldaia_t, stufa, pompa_e, pompa_bl };
                     break;
                 case 3:
-                    riscaldamaento_scelto = stufa;
+                    riscaldamento_scelto=stufa;
                     riscaldamenti = new List<object>() { caldaia_c, caldaia_t, stufa, pompa_e, pompa_bl };
                     break;
                 case 4:
-                    riscaldamaento_scelto =pompa_e;
+                    riscaldamento_scelto=pompa_e;
                     riscaldamenti = new List<object>() { caldaia_c, caldaia_t, stufa, pompa_e, pompa_bl };
                     break;
                 case 5:
-                    riscaldamaento_scelto = pompa_bl;
+                    riscaldamento_scelto=pompa_bl;
                     riscaldamenti = new List<object>() { caldaia_c, caldaia_t, stufa, pompa_e, pompa_bl };
                     break;
             }
 
-            if (riscaldamaento_scelto.Get_tipologia_consumo() == "gas")
+            if (riscaldamento_scelto.Get_tipologia_consumo() == "Gas")
             {
-                riscaldamaento_scelto.Set_costo_gas();
-                riscaldamaento_scelto.Set_consumo(smc);
-                riscaldamaento_scelto.Calcola_utilizzo();
+                riscaldamento_scelto.Set_costo_gas();
+                riscaldamento_scelto.Set_consumo(smc);
+                riscaldamento_scelto.Calcola_utilizzo(kwh);
             }
-            else
+            else if(riscaldamento_scelto.Get_tipologia_consumo() == "Elettricita")
             {
-                riscaldamaento_scelto.Set_costo_elettricità();
-                riscaldamaento_scelto.Set_consumo(kwh);
-                riscaldamaento_scelto.Calcola_utilizzo();
+                riscaldamento_scelto.Set_costo_elettricità();
+                riscaldamento_scelto.Set_consumo(kwh);
+                riscaldamento_scelto.Calcola_utilizzo(smc);
 
             }
 
-            spesa_tot_materia = riscaldamaento_scelto.costo_totale;//spesa totale provocata dal macchinario posseduta dall'utente
+            //Istanza Bolletta
+            Bolletta bolletta = new Bolletta();
+            riscaldamento_scelto.Calcola_costo_totale();//spesa totale materia
+            spesa_tot_materia = riscaldamento_scelto.costo_totale;//spesa totale provocata dal macchinario posseduta dall'utente
             bolletta.Set_spesa_materia(spesa_tot_materia);//Passo alla classe bolletta la spesa totale provocata dal macchinario
             bolletta.Calcolo_bolletta2();//Calcolo la bolletta senza costi aggiuntivi pk la macchina è già posseduta dall'utente
 
-            string info_bolletta=bolletta.Informazioni_bolletta();
+            
+            string nome=riscaldamento_scelto.Get_nome();
+            bolletta.Set_nome(nome);
+            string info_bolletta = bolletta.Informazioni_bolletta();
             Console.WriteLine(info_bolletta);
-            Tutte_bollette();
+            //Adesso calcolo le bollette con tutti i macchinari per i prossimi 10 anni e vedo la più conveniente
+            Tutte_bollette(smc,kwh);
             string considerazione = Controllo_migliore();
-            Console.WriteLine($"La miglior macchina per risparmiare sulla bolletta è {considerazione}");
+            if (considerazione == nome)
+            {
+                Console.WriteLine("Hai già un ottimo impianto di riscaldamento");
+            }
+            else
+            {
+                Console.WriteLine($"La miglior macchina per risparmiare sulla bolletta nei prossimi dieci anni è {considerazione}");
+            }
+           
 
             Console.ReadKey();
         }

@@ -8,15 +8,15 @@ namespace Bolletta_finale
     {
         public Pompa_e()
         {
-            this.tipologia_consumo = "Elettricita'";
+            this.tipologia_consumo = "Elettricita";
             this.costi_aggiuntivi = 1250;
             this.rendimento = 2.8;
             this.nome_macchina = "Pompa economica";
         }
 
-        public override void Calcola_utilizzo()
+        public override void Calcola_utilizzo(double consumo)
         {
-            this.utilizzo_annuale = this.consumo_totale * (this.potere_calorifico / this.rendimento);
+            this.utilizzo_annuale =consumo * (this.potere_calorifico / this.rendimento);
         }
     }
 }

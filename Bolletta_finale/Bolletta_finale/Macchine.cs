@@ -24,6 +24,7 @@ namespace Bolletta_finale
             this.potere_calorifico = 10.7;//per trasformare smc in Kwh, in quanto 1smc equivale a 10,7 KWh
             this.costo_elettricità = 0.276;//Prezzo attuale energia elettrica
             this.costo_gas = 1.05;//Prezzo attuale gas
+            this.tipologia_consumo = "";
         }
         //Funzioni Get
         public string Get_tipologia_consumo()//se si tratta di elettricità o gas
@@ -63,7 +64,7 @@ namespace Bolletta_finale
         }
 
         //Funzioni di calcolo 
-        public virtual void Calcola_utilizzo()
+        public virtual void Calcola_utilizzo(double consumo)
         {
         }
 
@@ -74,7 +75,7 @@ namespace Bolletta_finale
         //Funzione ToString
         public override string ToString()
         {
-            return $"I costi per l'acquisto e l'installazione della macchina sono{this.costi_aggiuntivi}€, l'utilizzo annuale e'{this.utilizzo_annuale} e il rendimento e' {this.rendimento}";
+            return $"I costi per l'acquisto e l'installazione della macchina sono {Math.Round(this.costi_aggiuntivi,2)}€, l'utilizzo annuale e'{Math.Round(this.utilizzo_annuale,2)} e il rendimento e' {Math.Round(this.rendimento,2)}";
         }
     }
 }

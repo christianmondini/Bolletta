@@ -10,9 +10,9 @@ namespace Bolletta_finale
         protected int oneri_sistema;
         protected int spesa_fissa;//qvd gas o pcv per energia elettrica
         protected double spesa_tot_materia;
-        protected double tot_bolletta1;//bolletta di quando si compra anche la macchina
-        protected double tot_bolletta2;//bolletta normale degli annni seguenti
-        public double bolletta_anni;
+        public double tot_bolletta1;//bolletta di quando si compra anche la macchina
+        public double tot_bolletta2;//bolletta normale degli annni seguenti
+        protected string macchina_nome;
 
         public Bolletta()
         {
@@ -31,6 +31,11 @@ namespace Bolletta_finale
         {
             this.spesa_tot_materia = materia;
         }
+
+        public void Set_nome(string nome)
+        {
+            this.macchina_nome =nome;
+        }
         //Funzioni calcoli
         public void Calcolo_bolletta1(double costi_aggiuntivi)
         {
@@ -41,20 +46,17 @@ namespace Bolletta_finale
         {
             this.tot_bolletta2 = this.spesa_tot_materia + this.gestione_contatore + this.oneri_sistema + this.spesa_fissa;
         }
-        public void Calcolo_bolletta_anni()
-        {
-            this.bolletta_anni=this.tot_bolletta1 + this.tot_bolletta2;
-        }
+        
         //Funzione ToString
 
         public override string ToString()
         {
-            return $"La bolletta il primo anno considerando le spese d'installazione sara' di{this.tot_bolletta1}€, mentre dall'anno seguente sarà di {this.tot_bolletta2}€ ";
+            return $"Con {this.macchina_nome} la bolletta il primo anno considerando le spese d'installazione sara' di {Math.Round(this.tot_bolletta1,2)} £, mentre dall'anno seguente sarà di {Math.Round(this.tot_bolletta2,2)} £ ";
         }
 
         public string Informazioni_bolletta()
         {
-            return $"La bolletta e' di {this.tot_bolletta2}";
+            return $"La bolletta con {this.macchina_nome} e' di {Math.Round(this.tot_bolletta2,2)} £";
         }
     }
 }
