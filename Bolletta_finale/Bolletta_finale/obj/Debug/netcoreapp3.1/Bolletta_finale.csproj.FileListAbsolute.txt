@@ -1,0 +1,14 @@
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.exe
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.deps.json
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.runtimeconfig.json
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.runtimeconfig.dev.json
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.dll
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.pdb
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.csproj.AssemblyReference.cache
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.GeneratedMSBuildEditorConfig.editorconfig
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.AssemblyInfoInputs.cache
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.AssemblyInfo.cs
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.csproj.CoreCompileInputs.cache
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.dll
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.pdb
+D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.genruntimeconfig.cache
