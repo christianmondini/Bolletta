@@ -61,12 +61,13 @@ namespace Bolletta_finale
             return kwh;
         }
 
-        public static void Tutte_bollette(double smc, double kwh)
+        public static void Tutte_bollette(double smc, double kwh,string nome_macchina)
         {
             int i = 0; 
           foreach(Macchine riscaldamento in riscaldamenti)
             {
                 Bolletta bolletta = new Bolletta();
+                double bollettone=0;
 
                 if (riscaldamento.Get_tipologia_consumo() == "Gas")
                 {
@@ -85,18 +86,34 @@ namespace Bolletta_finale
                 riscaldamento.Calcola_costo_totale();//spesa totale materia
                 spesa_tot_materia = riscaldamento.costo_totale;//spesa totale provocata dal macchinario
                 bolletta.Set_spesa_materia(spesa_tot_materia);//Passo alla classe bolletta la spesa totale provocata dal macchinario
-                bolletta.Calcolo_bolletta2();
-                double costi_aggiuntivi = riscaldamento.Get_costi_aggiuntivi();
+                bolletta.Calcolo_bolletta2();//calcolo bolletta senza costi aggiuntivi
+                
+                string nome = riscaldamento.Get_nome();//prendo il nome
+                bolletta.Set_nome(nome);//setto il nome all'interno della classe bolletta
+                
+               if(nome==nome_macchina){
+                bollettone= bolletta.tot_bolletta2;
+                string info_bolletta=bolletta.informazioni_bolletta();
+                Console.WriteLine(info_bolletta);
+                nomi_macchine[i] =nome;
+                bollette[i] = bollettone;
+                 i++;
+                }else{
+                   
+                double costi_aggiuntivi = riscaldamento.Get_costi_aggiuntivi();//trovo costi aggiuntivi
                 bolletta.Calcolo_bolletta1(costi_aggiuntivi);//Calcolo la bolletta con costi aggiuntivi pk è una macchina non posseduta dall'utente
-                string nome = riscaldamento.Get_nome();
-                bolletta.Set_nome(nome);
+                
                 Console.WriteLine(bolletta);
-                double bollettone =bolletta.tot_bolletta1+(bolletta.tot_bolletta2*9);//calcolo l'andamento della bolletta nel corso di 10 anni
+                bollettone =bolletta.tot_bolletta1+(bolletta.tot_bolletta2*9);//calcolo l'andamento della bolletta nel corso di 10 anni
                 //Ed ora dopo aver calcolato le bollette per ogni macchina non posseduta dall'utente le vado ad inserire nell'array per compararle e vedere quale fa risparmiare di più
                 
                  nomi_macchine[i] =nome;
                  bollette[i] = bollettone;
                  i++;
+                
+                }
+              
+                
                 
             }
         }
@@ -185,7 +202,7 @@ namespace Bolletta_finale
             string info_bolletta = bolletta.Informazioni_bolletta();
             Console.WriteLine(info_bolletta);
             //Adesso calcolo le bollette con tutti i macchinari per i prossimi 10 anni e vedo la più conveniente
-            Tutte_bollette(smc,kwh);
+            Tutte_bollette(smc,kwh,nome);
             string considerazione = Controllo_migliore();
             if (considerazione == nome)
             {
