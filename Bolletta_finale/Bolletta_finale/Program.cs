@@ -92,7 +92,7 @@ namespace Bolletta_finale
                 bolletta.Set_nome(nome);//setto il nome all'interno della classe bolletta
                 
                if(nome==nome_macchina){
-                bollettone= bolletta.tot_bolletta2;
+                bollettone= bolletta.tot_bolletta2*10;
                 string info_bolletta=bolletta.informazioni_bolletta();
                 Console.WriteLine(info_bolletta);
                 nomi_macchine[i] =nome;
