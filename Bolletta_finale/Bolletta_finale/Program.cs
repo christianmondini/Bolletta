@@ -61,7 +61,7 @@ namespace Bolletta_finale
             return kwh;
         }
 
-        public static void Tutte_bollette(double smc, double kwh,string nome_macchina)
+        public static void Tutte_bollette(string nome_macchina)
         {
             int i = 0; 
           foreach(Macchine riscaldamento in riscaldamenti)
@@ -92,19 +92,20 @@ namespace Bolletta_finale
                 bolletta.Set_nome(nome);//setto il nome all'interno della classe bolletta
                 
                if(nome==nome_macchina){
-                bollettone= bolletta.tot_bolletta2*10;
-                string info_bolletta=bolletta.informazioni_bolletta();
-                Console.WriteLine(info_bolletta);
+                bollettone= bolletta.tot_bolletta2*10;//bolletta per i prossimi 10 anni senza spesa per installazione e gestione macchina
+                /*string info_bolletta=bolletta.Informazioni_bolletta(); Non stampo pk tanto l'utente sà già quanto andrà a pagare di bolletta
+                Console.WriteLine(info_bolletta);*/
                 nomi_macchine[i] =nome;
                 bollette[i] = bollettone;
                  i++;
-                }else{
+                }else
+                {
                    
                 double costi_aggiuntivi = riscaldamento.Get_costi_aggiuntivi();//trovo costi aggiuntivi
                 bolletta.Calcolo_bolletta1(costi_aggiuntivi);//Calcolo la bolletta con costi aggiuntivi pk è una macchina non posseduta dall'utente
                 
                 Console.WriteLine(bolletta);
-                bollettone =bolletta.tot_bolletta1+(bolletta.tot_bolletta2*9);//calcolo l'andamento della bolletta nel corso di 10 anni
+                bollettone =bolletta.tot_bolletta1+(bolletta.tot_bolletta2*9);//calcolo l'andamento della bolletta nel corso di 10 anni considerando il primo con installazione e gestione della macchina
                 //Ed ora dopo aver calcolato le bollette per ogni macchina non posseduta dall'utente le vado ad inserire nell'array per compararle e vedere quale fa risparmiare di più
                 
                  nomi_macchine[i] =nome;
@@ -201,9 +202,11 @@ namespace Bolletta_finale
             bolletta.Set_nome(nome);
             string info_bolletta = bolletta.Informazioni_bolletta();
             Console.WriteLine(info_bolletta);
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------");
             //Adesso calcolo le bollette con tutti i macchinari per i prossimi 10 anni e vedo la più conveniente
-            Tutte_bollette(smc,kwh,nome);
+            Tutte_bollette(nome);
             string considerazione = Controllo_migliore();
+            Console.WriteLine("-------------------------------------------------------------------------------------------------------------");
             if (considerazione == nome)
             {
                 Console.WriteLine("Hai già un ottimo impianto di riscaldamento");

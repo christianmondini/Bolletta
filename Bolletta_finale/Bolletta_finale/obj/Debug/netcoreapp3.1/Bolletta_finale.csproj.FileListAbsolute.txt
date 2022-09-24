@@ -12,3 +12,17 @@ D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolle
 D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.dll
 D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.pdb
 D:\5^F_informatica\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.genruntimeconfig.cache
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.csproj.AssemblyReference.cache
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.AssemblyInfoInputs.cache
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.AssemblyInfo.cs
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.csproj.CoreCompileInputs.cache
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.dll
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.pdb
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.exe
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.deps.json
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.runtimeconfig.json
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.runtimeconfig.dev.json
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.dll
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\bin\Debug\netcoreapp3.1\Bolletta_finale.pdb
+C:\Users\Christian\Documents\GitHub\Bolletta\Bolletta_finale\Bolletta_finale\obj\Debug\netcoreapp3.1\Bolletta_finale.genruntimeconfig.cache

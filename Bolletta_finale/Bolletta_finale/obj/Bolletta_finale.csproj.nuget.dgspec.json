@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\5^F_informatica\\Bolletta_finale\\Bolletta_finale\\Bolletta_finale.csproj": {}
+    "C:\\Users\\Christian\\Documents\\GitHub\\Bolletta\\Bolletta_finale\\Bolletta_finale\\Bolletta_finale.csproj": {}
   },
   "projects": {
-    "D:\\5^F_informatica\\Bolletta_finale\\Bolletta_finale\\Bolletta_finale.csproj": {
+    "C:\\Users\\Christian\\Documents\\GitHub\\Bolletta\\Bolletta_finale\\Bolletta_finale\\Bolletta_finale.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\5^F_informatica\\Bolletta_finale\\Bolletta_finale\\Bolletta_finale.csproj",
+        "projectUniqueName": "C:\\Users\\Christian\\Documents\\GitHub\\Bolletta\\Bolletta_finale\\Bolletta_finale\\Bolletta_finale.csproj",
         "projectName": "Bolletta_finale",
-        "projectPath": "D:\\5^F_informatica\\Bolletta_finale\\Bolletta_finale\\Bolletta_finale.csproj",
+        "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Bolletta\\Bolletta_finale\\Bolletta_finale\\Bolletta_finale.csproj",
         "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
-        "outputPath": "D:\\5^F_informatica\\Bolletta_finale\\Bolletta_finale\\obj\\",
+        "outputPath": "C:\\Users\\Christian\\Documents\\GitHub\\Bolletta\\Bolletta_finale\\Bolletta_finale\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
